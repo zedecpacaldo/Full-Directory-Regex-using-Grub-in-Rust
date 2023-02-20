@@ -1,0 +1,19 @@
+[package]
+name = "bin"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "imp"
+path = "imp.rs"
+
+[[bin]]
+name = "fp"
+path = "fp.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+glob = "0.3.1"
+regex = "1.7.1"
+
