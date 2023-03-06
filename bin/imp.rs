@@ -32,6 +32,7 @@ fn main() {
                     }
                 }
             }
+            array.sort();
             println!("{}", array.join("\n"));
         }
         Err(_err) => {
