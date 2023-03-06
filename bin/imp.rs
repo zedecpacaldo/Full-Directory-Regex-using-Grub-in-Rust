@@ -2,7 +2,6 @@ use glob::{glob};
 use regex::Regex;
 use std::{fs, env};
 
-
 fn main() {
     // arguments array
     let args: Vec<_> = env::args().collect();                                                                                           
@@ -24,7 +23,8 @@ fn main() {
                     Ok(path) => {
                         let contents = fs::read_to_string(&path);
                         if re.is_match(&contents.unwrap()) {
-                            array.push(path.parent().unwrap().to_str().unwrap().to_string() + "\\" + path.file_name().unwrap().to_str().unwrap());
+                            if path.is_absolute(){array.push(path.parent().unwrap().to_str().unwrap().to_string() + "\\" + path.file_name().unwrap().to_str().unwrap());}
+                            else{array.push(path.to_str().unwrap().to_string());}
                         }
                     }
                     Err(_e) => {
@@ -32,7 +32,6 @@ fn main() {
                     }
                 }
             }
-        
             println!("{}", array.join("\n"));
         }
         Err(_err) => {

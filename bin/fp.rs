@@ -15,7 +15,6 @@ fn main() {
                     return
                 }
             };
-            
             let file_names: Vec<_> = glob(&glob_pattern)
             .expect("Invalid glob pattern")
             .filter_map(Result::ok)
@@ -27,7 +26,13 @@ fn main() {
                     None
                 }
             })
-            .map(|path| path.parent().unwrap().to_string_lossy().into_owned() + "\\" + &path.file_name().unwrap().to_string_lossy().into_owned())
+            .map(|path| {
+                if path.is_absolute(){
+                    path.parent().unwrap().to_string_lossy().into_owned() + "\\" + &path.file_name().unwrap().to_string_lossy().into_owned()
+                } else {
+                    path.to_str().unwrap().to_string()
+                }
+            })
             .collect();
         
             println!("{}", file_names.join("\n"));
@@ -37,6 +42,4 @@ fn main() {
             return
         }
     }
-
-    
 }
