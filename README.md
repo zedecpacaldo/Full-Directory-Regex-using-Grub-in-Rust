@@ -12,7 +12,7 @@ To run, go to repository directory and execute the command in terminal: `cargo r
 
 This will output the paths of all the files with matching regex.
 
-Sample Demo: This directory contains the source code for a reduced version of linux. I want to print all the files containing the word `fork()`
+Sample Demo: This directory contains the source code for a reduced version of linux. I want to print all the `.c` files containing the word `fork()`
 ![image](https://user-images.githubusercontent.com/23215457/224646430-c3f46c36-f7f1-4680-bd5f-8a913b21ba79.png)
 
 The first command is the `imperative` way and the second command is the `functional` way.
